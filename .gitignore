@@ -1,3 +1,4 @@
 /.idea/
-/spring-cloud-2020.iml
-/cloud-provider-payment-8001/target/
+*.iml
+/*/target/
+
