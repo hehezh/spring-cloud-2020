@@ -1,0 +1,21 @@
+server:
+  port: 90
+
+spring:
+  application:
+    name: cloud-consumer-order
+  devtools:
+    restart:
+      poll-interval: 2s
+      quiet-period: 1s
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+
+feign:
+  hystrix:
+    enabled: true

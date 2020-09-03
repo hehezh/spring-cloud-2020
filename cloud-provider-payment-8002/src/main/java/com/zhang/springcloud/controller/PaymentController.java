@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @Author zhang
  * @Description 支付服务
@@ -43,6 +45,21 @@ public class PaymentController {
             return new CommonResult(200, "查询成功, serverPort:" + serverPort, payment);
         }
         return new CommonResult(404, "没有对应记录，查询ID：" + id, null);
+    }
+
+    @GetMapping("/lb")
+    public String getPaymentLB() {
+        return serverPort;
+    }
+
+    @GetMapping("/feign/timeout")
+    public String paymentFeignTimeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return serverPort;
     }
 
 
